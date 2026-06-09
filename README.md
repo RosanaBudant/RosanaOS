@@ -1,46 +1,134 @@
 # RosanaOS
 
-Meu projeto de estudo para desenvolver um sistema operacional do zero utilizando C++, Assembly e arquitetura x86_64.
+Sistema operacional desenvolvido do zero como projeto de aprendizado em Ciência da Computação.
 
 ## Objetivo
 
-Criar um sistema operacional funcional para aprender conceitos avançados de:
+Este projeto tem como objetivo estudar e aplicar conceitos fundamentais de:
 
 * Arquitetura de Computadores
 * Sistemas Operacionais
 * Programação de Baixo Nível
 * Gerenciamento de Memória
+* Estruturas de Dados
 * Sistemas de Arquivos
-* Redes
-* Desenvolvimento de Kernel
+* Concorrência
+* Redes de Computadores
+
+O objetivo não é criar um substituto para Windows ou Linux, mas compreender como um computador funciona internamente construindo um sistema operacional próprio.
 
 ---
 
-# Roadmap
+# Ambiente de Desenvolvimento
 
-## Fase 0 - Preparação do Ambiente
+## Ferramentas Necessárias
+
+### Git
+
+Utilizado para versionamento do projeto.
+
+### VS Code
+
+Editor de código principal.
+
+### GCC / G++
+
+Compilador C/C++.
+
+### NASM
+
+Assembler utilizado para código de baixo nível e boot.
+
+### QEMU
+
+Emulador utilizado para executar e testar o sistema operacional.
+
+---
+
+## Ferramentas Recomendadas
+
+### WSL2 + Ubuntu
+
+Embora não seja obrigatório, facilita bastante o desenvolvimento, pois a maioria dos tutoriais e ferramentas de desenvolvimento de sistemas operacionais são voltados para Linux.
+
+### GDB
+
+Depuração do kernel.
+
+### Make
+
+Automação da compilação do projeto.
+
+---
+
+# Conhecimentos Necessários
+
+## Fundamentos
+
+Antes de iniciar o desenvolvimento é importante entender:
+
+* Como um computador inicializa
+* O que é BIOS
+* O que é UEFI
+* O que é um Bootloader
+* O que é um Kernel
+* Como a CPU executa instruções
+* Diferença entre hardware e software
+
+---
+
+## Linguagens
+
+### C++
+
+Será a principal linguagem utilizada no kernel.
+
+Tópicos importantes:
+
+* Funções
+* Ponteiros
+* Referências
+* Classes
+* Estruturas
+* Manipulação de memória
+* Namespaces
+
+### Assembly x86-64
+
+Necessário para compreender o processo de boot e interagir diretamente com o hardware.
+
+Tópicos importantes:
+
+* Registradores
+* Instruções básicas
+* Stack
+* Chamadas de função
+* Interrupções
+
+---
+
+# Roadmap de Desenvolvimento
+
+## Fase 0 - Preparação
 
 ### Objetivos
 
-* Configurar o ambiente de desenvolvimento.
-* Aprender os conceitos básicos necessários.
+* Instalar ferramentas
+* Configurar ambiente
+* Criar repositório
+* Entender o processo de boot
 
 ### Estudar
 
-* C++
-* Assembly x86_64
-* Git
-* GCC/G++
-* NASM
-* QEMU
-* GDB
-* Processo de Boot
-* BIOS e UEFI
+* BIOS
+* UEFI
+* Processo de inicialização
+* Assembly básico
+* Estrutura de um sistema operacional
 
-### Entregáveis
+### Conclusão
 
-* Ambiente funcionando.
-* Projeto inicial criado no GitHub.
+Compreender o que acontece desde o momento em que o computador é ligado até a execução do sistema operacional.
 
 ---
 
@@ -48,16 +136,16 @@ Criar um sistema operacional funcional para aprender conceitos avançados de:
 
 ### Objetivos
 
-Inicializar um kernel simples e exibir uma mensagem na tela.
+Criar um kernel mínimo capaz de iniciar.
 
 ### Estudar
 
 * GRUB
 * Multiboot
-* Estrutura de um Kernel
-* Geração de ISO bootável
+* Estrutura de kernel
+* Linkers
 
-### Entregáveis
+### Resultado esperado
 
 Exibir:
 
@@ -69,37 +157,38 @@ RosanaOS v0.1
 
 ### Objetivos
 
-Escrever diretamente na memória de vídeo.
+Escrever texto diretamente na tela.
 
 ### Estudar
 
 * VGA Text Mode
-* Memory-Mapped I/O
-* Endereço 0xB8000
+* Memory Mapped I/O
 
-### Entregáveis
+### Resultado esperado
 
-Implementar:
+Implementar função:
 
-print("Olá Mundo");
+print()
 
 ---
 
-## Fase 3 - Driver de Teclado
+## Fase 3 - Entrada pelo Teclado
 
 ### Objetivos
 
-Receber entrada do usuário.
+Capturar entrada do usuário.
 
 ### Estudar
 
-* Interrupções (IRQs)
+* Interrupções
+* IRQs
 * PIC
-* Scancodes PS/2
+* Teclado PS/2
+* Scancodes
 
-### Entregáveis
+### Resultado esperado
 
-Digitar texto no terminal.
+Receber texto digitado.
 
 ---
 
@@ -109,19 +198,13 @@ Digitar texto no terminal.
 
 Criar uma interface de linha de comando.
 
-### Comandos iniciais
+### Comandos mínimos
 
 * help
 * clear
 * version
 
-### Estudar
-
-* Buffers
-* Parsing de comandos
-* Manipulação de Strings
-
-### Entregáveis
+### Resultado esperado
 
 RosanaOS>
 
@@ -137,15 +220,15 @@ Implementar alocação dinâmica.
 
 * Heap
 * Stack
-* Paging
-* Memória Virtual
+* Paginação
+* Memória virtual
 
-### Entregáveis
+### Resultado esperado
 
 Implementar:
 
-kmalloc()
-kfree()
+* kmalloc()
+* kfree()
 
 ---
 
@@ -153,18 +236,18 @@ kfree()
 
 ### Objetivos
 
-Executar múltiplos processos.
+Executar múltiplas tarefas.
 
 ### Estudar
 
-* Scheduler
-* Context Switching
 * Processos
 * Threads
+* Scheduler
+* Context Switching
 
-### Entregáveis
+### Resultado esperado
 
-Executar duas ou mais tarefas simultaneamente.
+Múltiplas tarefas executando simultaneamente.
 
 ---
 
@@ -172,7 +255,7 @@ Executar duas ou mais tarefas simultaneamente.
 
 ### Objetivos
 
-Salvar e carregar arquivos.
+Persistência de dados.
 
 ### Estudar
 
@@ -181,13 +264,13 @@ Salvar e carregar arquivos.
 * FAT32
 * Estrutura de discos
 
-### Entregáveis
+### Resultado esperado
 
-Criar, salvar e ler arquivos.
+Criar, ler e salvar arquivos.
 
 ---
 
-## Fase 8 - Driver de Disco
+## Fase 8 - Drivers de Armazenamento
 
 ### Objetivos
 
@@ -197,9 +280,8 @@ Comunicação com dispositivos de armazenamento.
 
 * ATA
 * SATA
-* Controladores de armazenamento
 
-### Entregáveis
+### Resultado esperado
 
 Leitura e escrita em disco.
 
@@ -215,9 +297,9 @@ Desenhar elementos na tela.
 
 * Framebuffer
 * VESA
-* GOP (UEFI Graphics Output Protocol)
+* GOP
 
-### Entregáveis
+### Resultado esperado
 
 Implementar:
 
@@ -232,18 +314,18 @@ Implementar:
 
 ### Objetivos
 
-Criar uma área de trabalho simples.
+Criar ambiente gráfico.
 
 ### Componentes
 
-* Janela
-* Botão
-* Menu
+* Janelas
+* Botões
+* Menus
 * Barra de tarefas
 
-### Entregáveis
+### Resultado esperado
 
-Primeira interface gráfica funcional.
+Primeira área de trabalho funcional.
 
 ---
 
@@ -251,7 +333,7 @@ Primeira interface gráfica funcional.
 
 ### Objetivos
 
-Executar aplicações fora do kernel.
+Executar aplicações separadas do kernel.
 
 ### Estudar
 
@@ -260,9 +342,9 @@ Executar aplicações fora do kernel.
 * ELF
 * System Calls
 
-### Entregáveis
+### Resultado esperado
 
-Executar programas independentes.
+Executar programas externos.
 
 ---
 
@@ -270,7 +352,7 @@ Executar programas independentes.
 
 ### Objetivos
 
-Conectar o sistema à internet.
+Conectar o sistema à rede.
 
 ### Estudar
 
@@ -280,25 +362,39 @@ Conectar o sistema à internet.
 * DNS
 * DHCP
 
-### Entregáveis
+### Resultado esperado
 
-Comunicação em rede funcional.
+Comunicação de rede funcional.
+
+---
+
+# Estrutura do Projeto
+
+```text
+RosanaOS/
+│
+├── boot/
+├── kernel/
+├── drivers/
+├── memory/
+├── filesystem/
+├── userland/
+├── docs/
+├── build/
+├── iso/
+├── tests/
+└── README.md
+```
 
 ---
 
 # Recursos de Estudo
 
-## Livros
-
-* Operating Systems: Three Easy Pieces (OSTEP)
+* OSDev Wiki
+* The Little Book About OS Development
+* Operating Systems: Three Easy Pieces
 * Operating System Concepts
 * Modern Operating Systems
-
-## Sites
-
-* https://wiki.osdev.org
-* https://littleosbook.github.io
-* https://www.kernel.org
 
 ---
 
@@ -308,10 +404,6 @@ Comunicação em rede funcional.
 * [ ] Interface gráfica completa
 * [ ] Drivers USB
 * [ ] Suporte a áudio
-* [ ] Navegador simples
+* [ ] Rede completa
 * [ ] Porta para ARM (Raspberry Pi)
-* [ ] Executar em hardware real
-
----
-
-"Entender um computador significa construir um."
+* [ ] Execução em hardware real
