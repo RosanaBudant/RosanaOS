@@ -545,17 +545,24 @@ RosanaOS/
 
 ---
 
-## Contribuição
+## 🤝 Como Contribuir
 
-Este é um projeto pessoal de aprendizado, mas sugestões e dicas são sempre bem-vindas!
+Este é um projeto educacional aberto. Contribuições, sugestões e feedback são bem-vindos!
 
-### Como contribuir
+### Formas de contribuir:
+
+- ⭐ **Dê uma estrela** - Se gostou do projeto, deixe uma ⭐ no GitHub
+- 🐛 **Reporte bugs** - Encontrou um problema? Abra uma Issue
+- 💡 **Sugira melhorias** - Tem ideias? Compartilhe!
+- 🔧 **Envie Pull Requests** - Quer ajudar com código? Faça um fork e envie um PR
+
+### Como enviar um Pull Request:
+
 1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
+2. Crie uma branch para sua feature:
+   ```bash
+   git checkout -b feature/MinhaFeature
+   
 ### Relatando problemas
 - Use a seção de Issues do GitHub
 - Descreva o problema em detalhes
@@ -589,7 +596,7 @@ copies or substantial portions of the Software.
 
 - **Nome:** Rosana
 - **Projeto:** RosanaOS
-- **GitHub:** [github.com/rosana/RosanaOS](https://github.com/rosana/RosanaOS)
+- **GitHub:** [github.com/RosanaBudant/RosanaOS](https://github.com/RosanaBudant/RosanaOS)
 
 ---
 
