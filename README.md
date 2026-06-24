@@ -12,19 +12,20 @@ Sistema operacional desenvolvido do zero como projeto de aprendizado em Ciência
 
 ## Status Atual 🚀
 
-**Fase atual:** Fase 2 - Saída de Vídeo (em desenvolvimento)
+**Fase atual:** Fase 3 - Entrada pelo Teclado (em desenvolvimento)
 
-**Últimas conquistas:** 
+**Últimas conquistas:**
 - ✅ Kernel bootando com sucesso
 - ✅ Mensagem "RosanaOS v0.1" exibida na tela
 - ✅ Ambiente de desenvolvimento configurado
 - ✅ Makefile automatizado
 - ✅ ISO bootável criada
+- ✅ **Fase 2 concluída!** - Saída de Vídeo com cores e posicionamento
 
 **Próximos passos:**
-- Implementar função `print()`
-- Estudar VGA Text Mode
-- Entender Memory Mapped I/O
+- Implementar entrada de teclado (Fase 3)
+- Estudar interrupções e PIC
+- Criar buffer de teclado
 
 ---
 
@@ -187,20 +188,22 @@ Tópicos importantes:
 - ISO bootável criada
 
 **Arquivos criados:**
-- `kernel/multiboot.asm` - Cabeçalho Multiboot
-- `kernel/boot.asm` - Ponto de entrada
+- `boot/multiboot.asm` - Cabeçalho Multiboot
+- `boot/boot.asm` - Ponto de entrada
 - `kernel/kernel.cpp` - Kernel em C++
 - `linker.ld` - Script do linker
 - `Makefile` - Automação de compilação
 
 ---
 
-### Fase 2 - Saída de Vídeo (EM ANDAMENTO)
+### Fase 2 - Saída de Vídeo ✅ (CONCLUÍDO)
 
 **Objetivos:**
-- [ ] Escrever texto diretamente na tela
-- [ ] Implementar função `print()`
-- [ ] Controlar cores e posicionamento
+- [x] Escrever texto diretamente na tela
+- [x] Implementar função `print()`
+- [x] Controlar cores e posicionamento
+- [x] Suporte a \n (nova linha)
+- [x] Função clean() para limpar a tela  
 
 **Estudar:**
 - VGA Text Mode (modo texto)
@@ -208,19 +211,32 @@ Tópicos importantes:
 - Buffer de vídeo (0xB8000)
 - Atributos de cor (0x07 = branco/preto)
 
-**Resultado esperado:**
+**Funções Implementadas:**
 ```cpp
-print("Hello, World!");  // Escreve na tela
-print("RosanaOS", 0x0A); // Escreve em verde
+clear();                                    // Limpa a tela
+print("Hello, World!");                     // Escreve texto
+print_color("Texto preto com fundo verde!", (GREEN << 4) | BLACK); // Texto colorido
+set_color((WHITE << 4) | BLACK);           // Define cor padrão
+set_cursor(10, 20);                         // Move o cursor
 ```
+**Resultado:**
+- Sistema exibe texto colorido
+- Posicionamento de cursor funcionando
+- Quebra de linha automática
+- Tela limpa e organizada
+
+**Arquivos criados:**
+- `kernel/vga.cpp` - Driver VGA completo
 
 ---
 
-### Fase 3 - Entrada pelo Teclado
+### Fase 3 - Entrada pelo Teclado (EM ANDAMENTO)
 
 **Objetivos:**
 - [ ] Capturar entrada do usuário
 - [ ] Processar scancodes do teclado
+- [ ] Criar buffer de teclado
+- [ ] Exibir caracteres digitados na tela
 
 **Estudar:**
 - Interrupções (IRQs)
@@ -232,6 +248,7 @@ print("RosanaOS", 0x0A); // Escreve em verde
 **Resultado esperado:**
 - Sistema responde a teclas pressionadas
 - Buffer de teclado funcionando
+- Caracteres exibidos na tela
 
 ---
 
@@ -428,8 +445,9 @@ RosanaOS/
 │   └── multiboot.asm     # Cabeçalho Multiboot (em breve)
 │
 ├── kernel/               # Núcleo do sistema
-│   └── kernel.cpp        # Kernel principal em C++
-│
+│   ├── kernel.cpp        # Kernel principal em C++
+│   └── vga.cpp           # Driver VGA (cores e texto)
+|
 ├── drivers/              # Drivers de dispositivos
 │   ├── vga/              # Driver VGA
 │   ├── keyboard/         # Driver de teclado
@@ -612,4 +630,4 @@ copies or substantial portions of the Software.
 
 *"O melhor jeito de aprender algo é tentando ensinar ou construir do zero."*
 
-*Última atualização: 23 de Junho de 2026*
+*Última atualização: 24 de Junho de 2026*
