@@ -21,8 +21,8 @@ BUILD_DIR = build
 ISO_DIR = iso
 
 # Arquivos fonte
-MULTIBOOT_SRC = kernel/multiboot.asm
-BOOT_SRC = kernel/boot.asm
+MULTIBOOT_SRC = boot/multiboot.asm
+BOOT_SRC = boot/boot.asm
 KERNEL_SRC = kernel/kernel.cpp
 
 # Arquivos objeto
