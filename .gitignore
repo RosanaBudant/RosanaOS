@@ -1,0 +1,6 @@
+# Arquivos gerados
+build/
+*.o
+*.elf
+*.iso
+iso/boot/kernel.elf
