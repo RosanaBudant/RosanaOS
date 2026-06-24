@@ -428,8 +428,6 @@ RosanaOS/
 │   └── multiboot.asm     # Cabeçalho Multiboot (em breve)
 │
 ├── kernel/               # Núcleo do sistema
-│   ├── boot.asm          # Ponto de entrada do kernel
-│   ├── multiboot.asm     # Cabeçalho Multiboot
 │   └── kernel.cpp        # Kernel principal em C++
 │
 ├── drivers/              # Drivers de dispositivos
