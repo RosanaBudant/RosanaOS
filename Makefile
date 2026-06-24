@@ -23,13 +23,14 @@ ISO_DIR = iso
 # Arquivos fonte
 MULTIBOOT_SRC = boot/multiboot.asm
 BOOT_SRC = boot/boot.asm
-KERNEL_SRC = kernel/kernel.cpp
+KERNEL_SRC = kernel/kernel.cpp kernel/vga.cpp
 
 # Arquivos objeto
 MULTIBOOT_OBJ = $(BUILD_DIR)/multiboot.o
 BOOT_OBJ = $(BUILD_DIR)/boot.o
 KERNEL_OBJ = $(BUILD_DIR)/kernel.o
-OBJS = $(MULTIBOOT_OBJ) $(BOOT_OBJ) $(KERNEL_OBJ)
+VGA_OBJ = $(BUILD_DIR)/vga.o
+OBJS = $(MULTIBOOT_OBJ) $(BOOT_OBJ) $(KERNEL_OBJ) $(VGA_OBJ)
 
 # Alvo final
 KERNEL_ELF = $(BUILD_DIR)/kernel.elf
@@ -61,7 +62,9 @@ $(BOOT_OBJ): $(BOOT_SRC)
 # Compilar kernel.cpp
 $(KERNEL_OBJ): $(KERNEL_SRC)
 	@echo "🔧 Compilando kernel.cpp..."
-	$(GPP) $(GPP_FLAGS) -c -o $@ $<
+	$(GPP) $(GPP_FLAGS) -c -o build/kernel.o kernel/kernel.cpp
+	@echo "🔧 Compilando vga.cpp..."
+	$(GPP) $(GPP_FLAGS) -c -o build/vga.o kernel/vga.cpp
 
 # Criar ISO
 $(ISO): $(KERNEL_ELF)
